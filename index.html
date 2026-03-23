@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Texas Hold'em Poker — 5 AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game-container">
+    <!-- Игровой стол -->
+    <div class="poker-table">
+        <div class="dealer-button" id="dealerButton">D</div>
+        <div class="pot-display" id="potDisplay">Банк: 0</div>
+        <div class="community-cards" id="communityCards"></div>
+
+        <!-- Игроки (динамически добавляются) -->
+        <div class="players-area" id="playersArea"></div>
+
+        <!-- Лог действий -->
+        <div class="action-log" id="actionLog">
+            <h3>Лог действий</h3>
+            <div class="log-messages" id="logMessages"></div>
+        </div>
+
+        <!-- Кнопки действий (только для человека) -->
+        <div class="action-buttons" id="actionButtons">
+            <button id="foldBtn" disabled>Fold</button>
+            <button id="checkBtn" disabled>Check</button>
+            <button id="callBtn" disabled>Call</button>
+            <button id="raiseBtn" disabled>Raise</button>
+            <button id="allInBtn" disabled>All-in</button>
+        </div>
+
+        <!-- Слайдер для выбора суммы рейза -->
+        <div class="raise-slider" id="raiseSliderContainer" style="display: none;">
+            <input type="range" id="raiseAmount" min="0" max="0" step="1">
+            <span id="raiseValue">0</span>
+        </div>
+    </div>
+
+    <!-- Модальное окно настроек -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Настройки игры</h2>
+            <form id="settingsForm">
+                <label>Количество игроков (включая вас):</label>
+                <input type="number" id="playerCount" min="2" max="6" value="6">
+                <label>Стартовые фишки:</label>
+                <input type="number" id="startingChips" min="500" max="10000" step="100" value="1500">
+                <label>Малый блайнд:</label>
+                <input type="number" id="smallBlind" min="5" max="200" step="5" value="10">
+                <label>Большой блайнд:</label>
+                <input type="number" id="bigBlind" min="10" max="400" step="5" value="20">
+                <label>Стили ИИ (через запятую: Tight, Aggressive, Random, Adaptive, Random):</label>
+                <input type="text" id="aiStyles" value="Tight,Aggressive,Random,Adaptive,Random">
+                <button type="submit">Начать новую игру</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Кнопка открытия настроек (временно) -->
+    <button id="settingsBtn" class="settings-btn">⚙️ Настройки</button>
+</div>
+
+<!-- Подключение скриптов (все в корне) -->
+<script src="constants_ranks.js"></script>
+<script src="constants_suits.js"></script>
+<script src="constants_handranks.js"></script>
+<script src="constants_phases.js"></script>
+<script src="constants_actions.js"></script>
+
+<script src="config_game.js"></script>
+<script src="config_ai.js"></script>
+<script src="config_ui.js"></script>
+
+<script src="model_Card.js"></script>
+<script src="model_Deck.js"></script>
+<script src="model_Player.js"></script>
+<script src="model_HumanPlayer.js"></script>
+<script src="model_AIPlayer.js"></script>
+<script src="model_Pot.js"></script>
+<script src="model_GameState.js"></script>
+
+<script src="controller_Game.js"></script>
+<script src="controller_Betting.js"></script>
+<script src="controller_HandEvaluator.js"></script>
+<script src="controller_Winner.js"></script>
+<script src="controller_DeckManager.js"></script>
+
+<script src="ai_Base.js"></script>
+<script src="ai_Tight.js"></script>
+<script src="ai_Aggressive.js"></script>
+<script src="ai_Random.js"></script>
+<script src="ai_Adaptive.js"></script>
+<script src="ai_Factory.js"></script>
+<script src="ai_HandStrength.js"></script>
+
+<script src="view_Game.js"></script>
+<script src="view_Card.js"></script>
+<script src="view_Player.js"></script>
+<script src="view_ActionButtons.js"></script>
+<script src="view_Pot.js"></script>
+<script src="view_Log.js"></script>
+<script src="view_SettingsModal.js"></script>
+<script src="view_Animation.js"></script>
+
+<script src="util_helpers.js"></script>
+<script src="util_storage.js"></script>
+<script src="util_validation.js"></script>
+<script src="util_logger.js"></script>
+
+<script src="main.js"></script>
+</body>
+</html>
